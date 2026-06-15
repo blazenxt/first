@@ -1,0 +1,54 @@
+{
+  "name": "blazenxt-enterprise",
+  "version": "1.0.0",
+  "description": "Zero-Dependency, AI-Powered Vanilla JavaScript SPA with 12 AI Integrations and Enterprise Security",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server -p 8000 -c-1",
+    "dev": "npx http-server -p 8000",
+    "build": "node scripts/build.js",
+    "deploy": "node scripts/deploy.js",
+    "test": "node scripts/test.js",
+    "lint": "node scripts/lint.js",
+    "analyze": "node scripts/analyze.js",
+    "security-check": "npm audit",
+    "performance-check": "node scripts/performance-check.js",
+    "generate-docs": "node scripts/generate-docs.js"
+  },
+  "keywords": [
+    "vanilla-js",
+    "spa",
+    "ai",
+    "groq",
+    "openai",
+    "anthropic",
+    "google-gemini",
+    "cohere",
+    "huggingface",
+    "azure-openai",
+    "aws-bedrock",
+    "enterprise",
+    "security",
+    "performance",
+    "zero-dependencies",
+    "web-crypto",
+    "service-worker",
+    "pwa"
+  ],
+  "author": "pixellllgg",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pixellllgg/first.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pixellllgg/first/issues"
+  },
+  "homepage": "https://github.com/pixellllgg/first#readme",
+  "devDependencies": {},
+  "dependencies": {}
+}

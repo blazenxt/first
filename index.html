@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BlazeNXT Enterprise - Zero-Dependency AI-Powered SPA with 12 AI Integrations, Enterprise Security & Performance">
+    <meta name="theme-color" content="#000000">
+    <meta name="author" content="pixellllgg">
+    <meta name="keywords" content="AI, SPA, Vanilla JS, Enterprise, Security, Performance">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blazenxt.dev">
+    <meta property="og:title" content="BlazeNXT Enterprise">
+    <meta property="og:description" content="Zero-Dependency AI-Powered Single Page Application">
+    <meta property="og:image" content="https://blazenxt.dev/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://blazenxt.dev">
+    <meta name="twitter:title" content="BlazeNXT Enterprise">
+    <meta name="twitter:description" content="Zero-Dependency AI-Powered SPA with 12 AI Integrations">
+    <meta name="twitter:image" content="https://blazenxt.dev/twitter-image.png">
+    
+    <!-- JSON-LD Schema for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BlazeNXT Enterprise",
+      "description": "Zero-Dependency AI-Powered Vanilla JavaScript SPA",
+      "url": "https://blazenxt.dev",
+      "applicationCategory": "WebApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript enabled",
+      "author": {
+        "@type": "Person",
+        "name": "pixellllgg",
+        "url": "https://github.com/pixellllgg"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    
+    <title>BlazeNXT Enterprise - AI-Powered Zero-Dependency SPA</title>
+    <link rel="stylesheet" href="master.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="utilities.css">
+    <link rel="stylesheet" href="themes.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+    <link rel="canonical" href="https://blazenxt.dev">
+</head>
+<body class="theme-dark" data-page="home">
+    <!-- Navigation Bar -->
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="container flex justify-between items-center h-16">
+            <div class="logo-section flex items-center gap-3 cursor-pointer" id="logo" title="BlazeNXT Home">
+                <span class="logo-icon text-2xl">⚡</span>
+                <span class="logo-text font-bold text-xl">BlazeNXT</span>
+                <span class="logo-badge text-xs ml-2 px-2 py-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full">Enterprise</span>
+            </div>
+            
+            <ul class="nav-links flex gap-8 items-center" role="menubar">
+                <li role="menuitem"><a href="#" class="nav-link active" data-page="index" data-prefetch="true">Home</a></li>
+                <li role="menuitem"><a href="#about" class="nav-link" data-page="about" data-prefetch="true">About</a></li>
+                <li role="menuitem"><a href="#projects" class="nav-link" data-page="projects" data-prefetch="true">Projects</a></li>
+                <li role="menuitem"><a href="#contact" class="nav-link" data-page="contact" data-prefetch="true">Contact</a></li>
+                <li role="menuitem"><a href="#admin" class="nav-link admin-link" data-page="admin" title="Admin Panel" data-admin="true">⚙️</a></li>
+            </ul>
+            
+            <div class="nav-actions flex items-center gap-4">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">
+                    <svg class="sun-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+                <button class="menu-toggle md-hidden" id="menuToggle" aria-label="Toggle mobile menu" title="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Skeleton Loading -->
+    <section class="hero min-h-screen flex items-center" id="hero" role="region" aria-label="Hero section">
+        <div class="hero-skeleton" id="heroSkeleton" aria-busy="true" aria-label="Loading hero content">
+            <div class="skeleton-shimmer skeleton-h1"></div>
+            <div class="skeleton-shimmer skeleton-p"></div>
+            <div class="skeleton-shimmer skeleton-p short" style="width: 60%"></div>
+            <div class="skeleton-button"></div>
+        </div>
+        
+        <div class="hero-content hidden" id="heroContent" role="region" aria-label="Hero content">
+            <div class="container flex gap-12 items-center">
+                <div class="hero-text flex-1">
+                    <h1 class="hero-title fade-up text-5xl font-bold mb-6" style="--delay: 0.1s;">
+                        Welcome to <span class="gradient-text">BlazeNXT</span>
+                    </h1>
+                    <p class="hero-subtitle fade-up text-2xl text-gray-400 mb-4" style="--delay: 0.2s;">
+                        Zero-Dependency, AI-Powered Vanilla JavaScript SPA
+                    </p>
+                    <p class="hero-description fade-up text-lg text-gray-300 leading-relaxed mb-8" style="--delay: 0.3s;">
+                        Experience production-grade performance with enterprise-level security, 12 AI integrations, and cinematic animations—all without a single npm dependency. Deploy in seconds, scale infinitely.
+                    </p>
+                    <div class="cta-buttons fade-up flex gap-4" style="--delay: 0.4s;">
+                        <button class="btn btn-primary btn-lg px-8 py-3" id="ctaPrimary" aria-label="Explore features">Explore Features</button>
+                        <button class="btn btn-secondary btn-lg px-8 py-3" id="ctaSecondary" aria-label="View source code">View Source</button>
+                    </div>
+                </div>
+                <div class="hero-visual flex-1 hidden lg:block">
+                    <div class="animated-gradient"></div>
+                    <div class="floating-card card-1"></div>
+                    <div class="floating-card card-2"></div>
+                    <div class="floating-card card-3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-20" id="features" role="region" aria-label="Features">
+        <div class="container">
+            <h2 class="section-title text-4xl font-bold mb-16 text-center">Enterprise Features</h2>
+            <div class="features-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="0">
+                    <div class="feature-icon text-5xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold mb-3">Zero Dependencies</h3>
+                    <p class="text-gray-400">No npm bloat. Pure Vanilla JS with OOP patterns. Sub-100ms page transitions and instant load times.</p>
+                </div>
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="1">
+                    <div class="feature-icon text-5xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-3">12 AI Integrations</h3>
+                    <p class="text-gray-400">Groq, OpenAI, Anthropic, Google, Cohere, HuggingFace, Azure, AWS, Local LLMs, Vision & Speech APIs.</p>
+                </div>
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="2">
+                    <div class="feature-icon text-5xl mb-4">🔐</div>
+                    <h3 class="text-xl font-bold mb-3">Enterprise Security</h3>
+                    <p class="text-gray-400">SHA-256 encryption, brute-force protection, CORS validation, CSP headers, XSS & CSRF prevention.</p>
+                </div>
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="3">
+                    <div class="feature-icon text-5xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-3">Performance First</h3>
+                    <p class="text-gray-400">FCP < 1.2s, LCP < 2.5s, CLS < 0.1, TTI < 3.8s, Bundle < 150KB gzipped.</p>
+                </div>
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="4">
+                    <div class="feature-icon text-5xl mb-4">🎨</div>
+                    <h3 class="text-xl font-bold mb-3">Cinematic UI</h3>
+                    <p class="text-gray-400">Custom cursor tracking, magnetic hover effects, smooth scroll physics, skeleton loaders & glassmorphism.</p>
+                </div>
+                <div class="feature-card fade-in p-6 rounded-lg" data-index="5">
+                    <div class="feature-icon text-5xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold mb-3">Admin Dashboard</h3>
+                    <p class="text-gray-400">PIN-protected, drag-and-drop interface, real-time data management, no code changes needed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Services Section -->
+    <section class="ai-services py-20 bg-opacity-50" id="aiServices" role="region" aria-label="AI Services">
+        <div class="container">
+            <h2 class="section-title text-4xl font-bold mb-16 text-center">AI Service Integration</h2>
+            <div class="ai-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="ai-card p-6 rounded-lg border border-cyan-500 border-opacity-30" data-service="groq">
+                    <h4 class="text-lg font-bold mb-2">Groq (Llama 3)</h4>
+                    <p class="ai-description text-gray-400 mb-3">Ultra-fast inference for real-time AI responses</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+                <div class="ai-card p-6 rounded-lg border border-purple-500 border-opacity-30" data-service="openai">
+                    <h4 class="text-lg font-bold mb-2">OpenAI (GPT-4/3.5)</h4>
+                    <p class="ai-description text-gray-400 mb-3">Advanced reasoning and complex task handling</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+                <div class="ai-card p-6 rounded-lg border border-blue-500 border-opacity-30" data-service="anthropic">
+                    <h4 class="text-lg font-bold mb-2">Anthropic Claude</h4>
+                    <p class="ai-description text-gray-400 mb-3">Constitutional AI with enhanced safety</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+                <div class="ai-card p-6 rounded-lg border border-yellow-500 border-opacity-30" data-service="google">
+                    <h4 class="text-lg font-bold mb-2">Google Gemini</h4>
+                    <p class="ai-description text-gray-400 mb-3">Multimodal capabilities for diverse tasks</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+                <div class="ai-card p-6 rounded-lg border border-pink-500 border-opacity-30" data-service="cohere">
+                    <h4 class="text-lg font-bold mb-2">Cohere API</h4>
+                    <p class="ai-description text-gray-400 mb-3">Specialized text generation and classification</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+                <div class="ai-card p-6 rounded-lg border border-orange-500 border-opacity-30" data-service="huggingface">
+                    <h4 class="text-lg font-bold mb-2">HuggingFace</h4>
+                    <p class="ai-description text-gray-400 mb-3">Open-source models for privacy-first deployment</p>
+                    <div class="ai-status inline-block px-3 py-1 bg-green-500 bg-opacity-20 text-green-400 rounded-full text-sm">✓ Active</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats py-20" id="stats" role="region" aria-label="Statistics">
+        <div class="container">
+            <div class="stats-grid grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="stat-card text-center">
+                    <div class="stat-number text-4xl font-bold mb-2" data-target="30">0</div>
+                    <div class="stat-label text-gray-400">Production Files</div>
+                </div>
+                <div class="stat-card text-center">
+                    <div class="stat-number text-4xl font-bold mb-2" data-target="90000">0</div>
+                    <div class="stat-label text-gray-400">Lines of Code</div>
+                </div>
+                <div class="stat-card text-center">
+                    <div class="stat-number text-4xl font-bold mb-2" data-target="12">0</div>
+                    <div class="stat-label text-gray-400">AI Integrations</div>
+                </div>
+                <div class="stat-card text-center">
+                    <div class="stat-number text-4xl font-bold mb-2" data-target="0">0</div>
+                    <div class="stat-label text-gray-400">NPM Dependencies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Metrics Section -->
+    <section class="performance py-20" id="performance" role="region" aria-label="Performance metrics">
+        <div class="container">
+            <h2 class="section-title text-4xl font-bold mb-16 text-center">Performance Metrics</h2>
+            <div class="metrics-grid grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="metric-card p-6 rounded-lg text-center">
+                    <div class="metric-label text-gray-400 mb-2">FCP</div>
+                    <div class="metric-value text-3xl font-bold"><1.2s</div>
+                </div>
+                <div class="metric-card p-6 rounded-lg text-center">
+                    <div class="metric-label text-gray-400 mb-2">LCP</div>
+                    <div class="metric-value text-3xl font-bold"><2.5s</div>
+                </div>
+                <div class="metric-card p-6 rounded-lg text-center">
+                    <div class="metric-label text-gray-400 mb-2">CLS</div>
+                    <div class="metric-value text-3xl font-bold"><0.1</div>
+                </div>
+                <div class="metric-card p-6 rounded-lg text-center">
+                    <div class="metric-label text-gray-400 mb-2">TTI</div>
+                    <div class="metric-value text-3xl font-bold"><3.8s</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-20" id="ctaSection" role="region" aria-label="Call to action">
+        <div class="container text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Experience BlazeNXT?</h2>
+            <p class="text-xl text-gray-400 mb-8">Deploy your AI-powered SPA in seconds with zero dependencies and enterprise-grade features.</p>
+            <button class="btn btn-large btn-primary px-10 py-4 text-lg" id="ctaLarge" aria-label="Get started with BlazeNXT">Get Started Now</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12 border-t border-gray-700" id="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div class="footer-section">
+                    <h4 class="font-bold mb-4 flex items-center gap-2">⚡ BlazeNXT</h4>
+                    <p class="text-gray-400">Enterprise-grade SPA with AI integration and zero dependencies.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">API Docs</a></li>
+                        <li><a href="https://github.com/pixellllgg/first" class="text-gray-400 hover:text-cyan-400 transition">GitHub</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition">MIT License</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center pt-8 border-t border-gray-700">
+                <p class="text-gray-500">&copy; 2024 BlazeNXT Enterprise. Built with ❤️ by <a href="https://github.com/pixellllgg" class="text-cyan-400 hover:text-cyan-300">pixellllgg</a>. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container fixed bottom-6 right-6 z-50" role="region" aria-label="Notifications" aria-live="polite"></div>
+
+    <!-- Scripts - In order of dependency -->
+    <script src="config.js" async></script>
+    <script src="utils.js" async></script>
+    <script src="storage.js" async></script>
+    <script src="security.js" async></script>
+    <script src="api-manager.js" async></script>
+    <script src="ai-engine.js" async></script>
+    <script src="groq-integration.js" async></script>
+    <script src="openai-integration.js" async></script>
+    <script src="anthropic-integration.js" async></script>
+    <script src="google-integration.js" async></script>
+    <script src="performance-monitor.js" async></script>
+    <script src="analytics.js" async></script>
+    <script src="ui-core.js" async></script>
+    <script src="router.js" async></script>
+    <script src="app.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => {
+                    console.log('✓ Service Worker registered successfully');
+                    console.log('Scope:', reg.scope);
+                })
+                .catch(err => {
+                    console.warn('⚠️ Service Worker registration failed:', err);
+                });
+        }
+    </script>
+</body>
+</html>
