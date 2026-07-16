@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard - BlazeNXT Enterprise</title>
+</head>
+<body>
+    <main>
+        <section class="admin-section container py-12">
+            <!-- Access screen -->
+            <div id="adminAuthScreen" class="max-w-md mx-auto p-8 rounded-xl bg-gray-800 bg-opacity-40 border border-gray-700 text-center fade-in">
+                <div class="text-5xl mb-4">🔐</div>
+                <h2 class="text-2xl font-bold mb-2">Admin Authentication</h2>
+                <p class="text-sm text-gray-400 mb-6">Enter your 4-digit PIN code to unlock the admin dashboard. Default is <code class="bg-gray-900 px-1 py-0.5 rounded text-cyan-400">1234</code></p>
+                
+                <div class="flex justify-center gap-3 mb-6" id="pinInputs">
+                    <input type="password" maxlength="1" class="pin-dot w-12 h-14 bg-gray-900 border border-gray-700 rounded-lg text-center text-2xl font-bold text-white focus:outline-none focus:border-cyan-500">
+                    <input type="password" maxlength="1" class="pin-dot w-12 h-14 bg-gray-900 border border-gray-700 rounded-lg text-center text-2xl font-bold text-white focus:outline-none focus:border-cyan-500" disabled>
+                    <input type="password" maxlength="1" class="pin-dot w-12 h-14 bg-gray-900 border border-gray-700 rounded-lg text-center text-2xl font-bold text-white focus:outline-none focus:border-cyan-500" disabled>
+                    <input type="password" maxlength="1" class="pin-dot w-12 h-14 bg-gray-900 border border-gray-700 rounded-lg text-center text-2xl font-bold text-white focus:outline-none focus:border-cyan-500" disabled>
+                </div>
+
+                <button id="verifyPinBtn" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg text-white font-semibold text-sm hover:opacity-90 active:scale-95 transition">Verify PIN</button>
+            </div>
+
+            <!-- Dynamic Admin Panel -->
+            <div id="adminPanel" class="hidden fade-in">
+                <div class="flex justify-between items-center mb-12">
+                    <div>
+                        <h1 class="text-4xl font-bold gradient-text mb-1">Admin Control Room</h1>
+                        <p class="text-gray-400 text-sm">Real-time status monitor, telemetry, and service parameters.</p>
+                    </div>
+                    <button id="adminLogoutBtn" class="px-5 py-2.5 bg-red-600 hover:bg-red-500 rounded-lg text-white text-sm font-semibold transition">Lock System</button>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                    <div class="p-6 bg-gray-800/30 border border-gray-700/60 rounded-xl text-center">
+                        <div class="text-gray-400 text-xs font-semibold uppercase mb-1">Active AI Calls</div>
+                        <div class="text-3xl font-bold text-cyan-400">1,408</div>
+                        <div class="text-[10px] text-green-400 mt-2">▲ 14% vs last hr</div>
+                    </div>
+                    <div class="p-6 bg-gray-800/30 border border-gray-700/60 rounded-xl text-center">
+                        <div class="text-gray-400 text-xs font-semibold uppercase mb-1">Telemetry Errors</div>
+                        <div class="text-3xl font-bold text-red-500">0</div>
+                        <div class="text-[10px] text-gray-500 mt-2">All networks operational</div>
+                    </div>
+                    <div class="p-6 bg-gray-800/30 border border-gray-700/60 rounded-xl text-center">
+                        <div class="text-gray-400 text-xs font-semibold uppercase mb-1">Sub-100ms Transitions</div>
+                        <div class="text-3xl font-bold text-green-400">99.8%</div>
+                        <div class="text-[10px] text-green-400 mt-2">Perfect performance</div>
+                    </div>
+                    <div class="p-6 bg-gray-800/30 border border-gray-700/60 rounded-xl text-center">
+                        <div class="text-gray-400 text-xs font-semibold uppercase mb-1">API Tokens Tracked</div>
+                        <div class="text-3xl font-bold text-purple-400">12</div>
+                        <div class="text-[10px] text-gray-400 mt-2">Fully rotated & encrypted</div>
+                    </div>
+                </div>
+
+                <!-- Admin settings & Drag-and-Drop section -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Feature Settings -->
+                    <div class="lg:col-span-2 p-8 rounded-xl bg-gray-800/30 border border-gray-700/60">
+                        <h3 class="text-xl font-bold mb-6">Service Integration Flags</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center pb-3 border-b border-gray-800">
+                                <div>
+                                    <h4 class="font-semibold text-sm">Groq Llama 3 Engine</h4>
+                                    <p class="text-xs text-gray-400">Toggle ultra-fast inference.</p>
+                                </div>
+                                <input type="checkbox" checked class="w-10 h-6 bg-gray-900 rounded-full appearance-none checked:bg-cyan-500 relative transition cursor-pointer border border-gray-700 checked:before:translate-x-4 before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition">
+                            </div>
+
+                            <div class="flex justify-between items-center pb-3 border-b border-gray-800">
+                                <div>
+                                    <h4 class="font-semibold text-sm">Brute-Force Lockout Mode</h4>
+                                    <p class="text-xs text-gray-400">Automatic 15-minute lock after 5 failed inputs.</p>
+                                </div>
+                                <input type="checkbox" checked class="w-10 h-6 bg-gray-900 rounded-full appearance-none checked:bg-cyan-500 relative transition cursor-pointer border border-gray-700 checked:before:translate-x-4 before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition">
+                            </div>
+
+                            <div class="flex justify-between items-center pb-3 border-b border-gray-800">
+                                <div>
+                                    <h4 class="font-semibold text-sm">Service Worker offline caching</h4>
+                                    <p class="text-xs text-gray-400">Pre-caches about, projects and styles.</p>
+                                </div>
+                                <input type="checkbox" checked class="w-10 h-6 bg-gray-900 rounded-full appearance-none checked:bg-cyan-500 relative transition cursor-pointer border border-gray-700 checked:before:translate-x-4 before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-0.5 before:left-0.5 before:transition">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Drag-and-Drop priority organizer -->
+                    <div class="p-8 rounded-xl bg-gray-800/30 border border-gray-700/60">
+                        <h3 class="text-xl font-bold mb-1">AI Engine Priority</h3>
+                        <p class="text-xs text-gray-400 mb-6">Drag and re-order default fallback routing priority.</p>
+                        
+                        <div id="dragDropList" class="space-y-3">
+                            <div draggable="true" class="drag-item p-3 bg-gray-900 border border-gray-800 rounded-lg cursor-grab active:cursor-grabbing hover:border-cyan-500/50 transition flex items-center gap-3">
+                                <span class="text-gray-500 text-sm">☰</span>
+                                <span class="text-sm font-medium">1. Groq (Llama 3)</span>
+                            </div>
+                            <div draggable="true" class="drag-item p-3 bg-gray-900 border border-gray-800 rounded-lg cursor-grab active:cursor-grabbing hover:border-cyan-500/50 transition flex items-center gap-3">
+                                <span class="text-gray-500 text-sm">☰</span>
+                                <span class="text-sm font-medium">2. OpenAI (GPT-4)</span>
+                            </div>
+                            <div draggable="true" class="drag-item p-3 bg-gray-900 border border-gray-800 rounded-lg cursor-grab active:cursor-grabbing hover:border-cyan-500/50 transition flex items-center gap-3">
+                                <span class="text-gray-500 text-sm">☰</span>
+                                <span class="text-sm font-medium">3. Anthropic (Claude 3)</span>
+                            </div>
+                            <div draggable="true" class="drag-item p-3 bg-gray-900 border border-gray-800 rounded-lg cursor-grab active:cursor-grabbing hover:border-cyan-500/50 transition flex items-center gap-3">
+                                <span class="text-gray-500 text-sm">☰</span>
+                                <span class="text-sm font-medium">4. Google Gemini</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Administrative Portal Interactive script
+            (() => {
+                const pinInputs = document.querySelectorAll('.pin-dot');
+                const verifyBtn = document.getElementById('verifyPinBtn');
+                const authScreen = document.getElementById('adminAuthScreen');
+                const panel = document.getElementById('adminPanel');
+                const logoutBtn = document.getElementById('adminLogoutBtn');
+
+                if (!authScreen || !panel) return;
+
+                // Handle sequential PIN typing
+                pinInputs.forEach((input, index) => {
+                    input.addEventListener('keyup', (e) => {
+                        if (input.value.length === 1 && index < pinInputs.length - 1) {
+                            pinInputs[index + 1].removeAttribute('disabled');
+                            pinInputs[index + 1].focus();
+                        }
+                        if (e.key === 'Backspace' && index > 0) {
+                            pinInputs[index - 1].focus();
+                        }
+                    });
+                });
+
+                const runVerification = () => {
+                    let enteredPin = '';
+                    pinInputs.forEach(input => enteredPin += input.value);
+                    
+                    let targetPin = '1234';
+                    if (typeof BlazeNXTConfig !== 'undefined' && BlazeNXTConfig.SECURITY && BlazeNXTConfig.SECURITY.adminPanel) {
+                        targetPin = BlazeNXTConfig.SECURITY.adminPanel.pinCode || '1234';
+                    }
+
+                    if (enteredPin === targetPin) {
+                        authScreen.classList.add('hidden');
+                        panel.classList.remove('hidden');
+                        if (typeof UICore !== 'undefined') {
+                            UICore.showToast('Authentication approved! Welcome Admin.', 'success');
+                        }
+                    } else {
+                        if (typeof UICore !== 'undefined') {
+                            UICore.showToast('Invalid PIN code! Access Denied.', 'error');
+                        }
+                        pinInputs.forEach((input, index) => {
+                            input.value = '';
+                            if (index > 0) input.setAttribute('disabled', true);
+                        });
+                        pinInputs[0].focus();
+                    }
+                };
+
+                if (verifyBtn) {
+                    verifyBtn.addEventListener('click', runVerification);
+                }
+
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', () => {
+                        panel.classList.add('hidden');
+                        authScreen.classList.remove('hidden');
+                        pinInputs.forEach((input, index) => {
+                            input.value = '';
+                            if (index > 0) input.setAttribute('disabled', true);
+                        });
+                        pinInputs[0].focus();
+                        if (typeof UICore !== 'undefined') {
+                            UICore.showToast('Session locked.', 'info');
+                        }
+                    });
+                }
+
+                // Simple drag-and-drop mechanics
+                const dragList = document.getElementById('dragDropList');
+                if (dragList) {
+                    let dragSrcEl = null;
+
+                    const handleDragStart = function(e) {
+                        dragSrcEl = this;
+                        e.dataTransfer.effectAllowed = 'move';
+                        e.dataTransfer.setData('text/html', this.innerHTML);
+                        this.classList.add('opacity-50');
+                    };
+
+                    const handleDragOver = function(e) {
+                        if (e.preventDefault) {
+                            e.preventDefault();
+                        }
+                        e.dataTransfer.dropEffect = 'move';
+                        return false;
+                    };
+
+                    const handleDrop = function(e) {
+                        if (e.stopPropagation) {
+                            e.stopPropagation();
+                        }
+                        if (dragSrcEl !== this) {
+                            dragSrcEl.innerHTML = this.innerHTML;
+                            this.innerHTML = e.dataTransfer.getData('text/html');
+                        }
+                        return false;
+                    };
+
+                    const handleDragEnd = function() {
+                        this.classList.remove('opacity-50');
+                        document.querySelectorAll('.drag-item').forEach(item => {
+                            item.classList.remove('border-dashed');
+                        });
+                    };
+
+                    document.querySelectorAll('.drag-item').forEach(item => {
+                        item.addEventListener('dragstart', handleDragStart, false);
+                        item.addEventListener('dragover', handleDragOver, false);
+                        item.addEventListener('drop', handleDrop, false);
+                        item.addEventListener('dragend', handleDragEnd, false);
+                    });
+                }
+            })();
+        </script>
+    </main>
+</body>
+</html>

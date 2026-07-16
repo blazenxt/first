@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projects - BlazeNXT Enterprise</title>
+</head>
+<body>
+    <main>
+        <section class="projects-section container py-12">
+            <h1 class="text-5xl font-bold mb-6 text-center fade-in"><span class="gradient-text">Projects & AI Lab</span></h1>
+            <p class="text-xl text-gray-400 text-center max-w-3xl mx-auto mb-16 fade-in">
+                Explore showcase projects built on our platform or use our integrated AI to generate some on-the-fly.
+            </p>
+
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+                <div class="project-card p-6 rounded-lg bg-gray-800 bg-opacity-40 border border-gray-700 hover-lift transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-cyan-900 text-cyan-300">Enterprise</span>
+                        <span class="text-sm text-gray-500">Active</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">OmniChannel CRM</h3>
+                    <p class="text-gray-400 mb-4 text-sm">A decentralized, real-time client relation portal with local caching and offline-first storage capabilities.</p>
+                    <div class="flex gap-2 text-xs text-gray-500">
+                        <span>#WebCrypto</span> <span>#StorageModule</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-6 rounded-lg bg-gray-800 bg-opacity-40 border border-gray-700 hover-lift transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-purple-900 text-purple-300">AI Engine</span>
+                        <span class="text-sm text-gray-500">Active</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Content Synthesis Engine</h3>
+                    <p class="text-gray-400 mb-4 text-sm">Automated marketing copy generator connected directly to Llama 3 via Groq for sub-second responses.</p>
+                    <div class="flex gap-2 text-xs text-gray-500">
+                        <span>#Groq</span> <span>#AIEngine</span>
+                    </div>
+                </div>
+
+                <div class="project-card p-6 rounded-lg bg-gray-800 bg-opacity-40 border border-gray-700 hover-lift transition">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-green-900 text-green-300">PWA</span>
+                        <span class="text-sm text-gray-500">Optimized</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Blaze Analytics Dashboard</h3>
+                    <p class="text-gray-400 mb-4 text-sm">High-speed telemetry viewer displaying real-time metrics with zero impact on main-thread page performance.</p>
+                    <div class="flex gap-2 text-xs text-gray-500">
+                        <span>#Performance</span> <span>#Telemetry</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic AI Project Generator Lab -->
+            <div class="ai-lab p-8 rounded-xl bg-gradient-to-br from-cyan-950/20 to-purple-950/20 border border-cyan-800/40">
+                <div class="max-w-2xl mx-auto text-center">
+                    <h2 class="text-2xl font-bold mb-4">💡 AI Project Generator Lab</h2>
+                    <p class="text-sm text-gray-400 mb-6">Need a custom enterprise architecture blueprint? Describe your business need below, and BlazeNXT's integrated AI Engine will generate a modern solution outline instantly.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                        <input id="aiLabPrompt" type="text" placeholder="e.g. A fast real estate portal for green housing..." class="flex-1 px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500">
+                        <button id="aiLabGenerateBtn" class="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg text-white font-semibold text-sm hover:opacity-90 active:scale-95 transition">Generate Idea</button>
+                    </div>
+
+                    <div id="aiLabResult" class="hidden text-left p-6 rounded-lg bg-gray-900/60 border border-gray-800 text-sm leading-relaxed text-gray-300 whitespace-pre-wrap">
+                        <!-- AI Output will go here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Simple logic for the AI Generator page (run if scripts are evaluated or when router triggers it)
+            (() => {
+                const btn = document.getElementById('aiLabGenerateBtn');
+                const promptInput = document.getElementById('aiLabPrompt');
+                const result = document.getElementById('aiLabResult');
+                if (!btn || !promptInput || !result) return;
+
+                btn.addEventListener('click', async () => {
+                    const val = promptInput.value.trim();
+                    if (!val) {
+                        if (typeof UICore !== 'undefined') UICore.showToast('Please enter a valid prompt first!', 'warning');
+                        return;
+                    }
+
+                    btn.disabled = true;
+                    btn.textContent = 'Generating...';
+                    result.classList.remove('hidden');
+                    result.textContent = 'Contacting BlazeNXT AI Engine and loading models... Please wait.';
+
+                    try {
+                        let responseText = '';
+                        if (typeof AIEngine !== 'undefined') {
+                            // Run actual AI completed request
+                            responseText = await AIEngine.complete(`Generate an innovative web application architecture blueprint for this business goal: ${val}. Keep it to 3 short paragraphs containing structure, security, and AI integrations.`);
+                        } else {
+                            // Fallback mock text with realistic architecture suggestions
+                            await new Promise(res => setTimeout(res, 1500));
+                            responseText = `🚀 **PROJECT BLUEPRINT: GREENHOUSE CORE**\n\n` +
+                                           `**Architecture**: Single Page Application powered by BlazeNXT Modular OOP. Leveraging Service Workers for offline catalog browsing and heavy CDN caching to minimize FCP to <1.1 seconds.\n\n` +
+                                           `**Security**: Input sanitization via OWASP-compliant helpers, storage encryption for buyer profiles, and CSP-headers preventing malicious content injection.\n\n` +
+                                           `**AI Integrations**: Groq (Llama 3) power-matching algorithm matching user carbon goals to active listings instantly.`;
+                        }
+                        result.textContent = responseText;
+                        if (typeof UICore !== 'undefined') UICore.showToast('Project idea successfully synthesized!', 'success');
+                    } catch (err) {
+                        result.textContent = `Error: ${err.message || err}`;
+                        if (typeof UICore !== 'undefined') UICore.showToast('AI synthesis failed. Mocking placeholder instead.', 'warning');
+                    } finally {
+                        btn.disabled = false;
+                        btn.textContent = 'Generate Idea';
+                    }
+                });
+            })();
+        </script>
+    </main>
+</body>
+</html>

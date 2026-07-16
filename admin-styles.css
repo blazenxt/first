@@ -1,0 +1,43 @@
+/**
+ * BlazeNXT Admin Dashboard Stylesheet
+ * ====================================
+ * Specific overrides, styling parameters for the pin inputs, drag-and-drop elements,
+ * metric cards, and dashboard-specific transitions.
+ * 
+ * @module admin-styles
+ * @version 1.0.0
+ * @author pixellllgg
+ * @license MIT
+ */
+
+/* Drag-and-drop drag over styling */
+.drag-item {
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.drag-item:hover {
+    background-color: var(--color-background-secondary);
+}
+
+.drag-item.opacity-50 {
+    opacity: 0.5;
+    border-style: dashed;
+    border-color: var(--color-primary);
+}
+
+/* PIN code entry interaction styling */
+.pin-dot {
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.pin-dot:focus {
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+    border-color: var(--color-primary);
+}
+
+/* Admin Dashboard Specific Metrics */
+.admin-card {
+    background: linear-gradient(135deg, rgba(26, 31, 58, 0.6), rgba(37, 45, 74, 0.6));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}

@@ -1,0 +1,88 @@
+/**
+ * BlazeNXT Custom Themes Stylesheet
+ * ==================================
+ * Implements high-fidelity light and dark theme overrides, custom neon glows,
+ * cyber color schemes, and glassmorphism styling parameters.
+ * 
+ * @module themes
+ * @version 1.0.0
+ * @author pixellllgg
+ * @license MIT
+ */
+
+/* Explicit theme-dark rules (Default fallback) */
+body.theme-dark {
+    --color-background: #0a0e27;
+    --color-background-secondary: #151b36;
+    --color-surface: #1a1f3a;
+    --color-surface-secondary: #252d4a;
+    --color-text: #ffffff;
+    --color-text-secondary: #a0a0a0;
+    --color-text-tertiary: #707070;
+    --color-border: #333333;
+    --color-primary: #00d4ff;
+    --color-secondary: #ff00ff;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* Explicit theme-light overrides */
+body.theme-light {
+    --color-background: #ffffff;
+    --color-background-secondary: #f9fafb;
+    --color-surface: #f3f4f6;
+    --color-surface-secondary: #e5e7eb;
+    --color-surface-tertiary: #d1d5db;
+    --color-text: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-tertiary: #9ca3af;
+    --color-border: #e5e7eb;
+    --color-primary: #0284c7;
+    --color-secondary: #db2777;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+/* Theme transition animation */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom indicator styles depending on active theme */
+body.theme-dark .sun-icon {
+    display: block;
+}
+body.theme-dark .moon-icon {
+    display: none;
+}
+
+body.theme-light .sun-icon {
+    display: none;
+}
+body.theme-light .moon-icon {
+    display: block;
+}
+
+/* Custom interactive custom cursor variables */
+.custom-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    z-index: 9999;
+}
+.custom-cursor.hover {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 212, 255, 0.1);
+    border-color: var(--color-secondary);
+}
+@media (max-width: 768px) {
+    .custom-cursor {
+        display: none !important;
+    }
+}

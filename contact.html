@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - BlazeNXT Enterprise</title>
+</head>
+<body>
+    <main>
+        <section class="contact-section container py-12">
+            <h1 class="text-5xl font-bold mb-6 text-center fade-in"><span class="gradient-text">Get in Touch</span></h1>
+            <p class="text-xl text-gray-400 text-center max-w-2xl mx-auto mb-16 fade-in">
+                Have questions about our Zero-Dependency architecture? Drop us a message, or try our live support bot.
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <!-- Contact Form Card -->
+                <div class="p-8 rounded-xl bg-gray-800 bg-opacity-40 border border-gray-700 fade-in" style="--delay: 0.1s;">
+                    <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+                    
+                    <form id="contactForm" onsubmit="event.preventDefault();">
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold text-gray-400 mb-2" for="name">Name</label>
+                            <input id="contactName" type="text" required class="w-full px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500" placeholder="John Doe">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold text-gray-400 mb-2" for="email">Email</label>
+                            <input id="contactEmail" type="email" required class="w-full px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500" placeholder="john@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-semibold text-gray-400 mb-2" for="message">Message</label>
+                            <textarea id="contactMessage" required rows="4" class="w-full px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500" placeholder="Hi there, I am interested in building a high-speed SPA..."></textarea>
+                        </div>
+                        
+                        <button type="submit" id="contactSubmitBtn" class="w-full py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg text-white font-semibold text-sm hover:opacity-90 active:scale-95 transition">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- AI Copilot Support Box -->
+                <div class="flex flex-col justify-between p-8 rounded-xl bg-gradient-to-br from-cyan-950/10 to-blue-950/10 border border-cyan-800/30 fade-in" style="--delay: 0.2s;">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-2 flex items-center gap-2">🤖 Live AI Support</h3>
+                        <p class="text-sm text-gray-400 mb-6">Chat with BlazePilot to get instantaneous answers about licensing, integration, performance, or custom code generation.</p>
+                        
+                        <!-- Chat history container -->
+                        <div id="aiChatBox" class="h-64 overflow-y-auto mb-6 p-4 rounded-lg bg-gray-950/60 border border-gray-800/80 space-y-3 flex flex-col">
+                            <div class="self-start px-4 py-2.5 rounded-lg bg-gray-900 text-sm max-w-[85%] text-gray-300">
+                                Hello! I'm BlazePilot. Ask me anything about our zero-dependency enterprise architecture.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat input -->
+                    <div class="flex gap-2">
+                        <input id="aiChatInput" type="text" placeholder="Type your question..." class="flex-1 px-4 py-3 bg-gray-900/80 border border-gray-700 rounded-lg text-white text-sm focus:outline-none focus:border-cyan-500">
+                        <button id="aiChatSendBtn" class="px-5 py-3 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-white font-semibold text-sm transition">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            // Contact & AI Support Scripts
+            (() => {
+                // Form handling
+                const form = document.getElementById('contactForm');
+                const submitBtn = document.getElementById('contactSubmitBtn');
+                if (form && submitBtn) {
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = 'Sending Message...';
+                        
+                        // Simulate dispatch and latency
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        
+                        if (typeof Analytics !== 'undefined') {
+                            Analytics.trackEvent('Contact', 'submit_form', document.getElementById('contactName').value);
+                        }
+
+                        if (typeof UICore !== 'undefined') {
+                            UICore.showToast('Message sent! Our team will get back to you shortly.', 'success');
+                        }
+
+                        form.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send Message';
+                    });
+                }
+
+                // AI Live chat support logic
+                const chatSendBtn = document.getElementById('aiChatSendBtn');
+                const chatInput = document.getElementById('aiChatInput');
+                const chatBox = document.getElementById('aiChatBox');
+
+                if (chatSendBtn && chatInput && chatBox) {
+                    const appendMessage = (text, sender) => {
+                        const div = document.createElement('div');
+                        div.className = sender === 'user' 
+                            ? 'self-end px-4 py-2.5 rounded-lg bg-cyan-900/80 text-white text-sm max-w-[85%]'
+                            : 'self-start px-4 py-2.5 rounded-lg bg-gray-900 text-gray-300 text-sm max-w-[85%]';
+                        div.textContent = text;
+                        chatBox.appendChild(div);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+                    };
+
+                    const handleSend = async () => {
+                        const message = chatInput.value.trim();
+                        if (!message) return;
+
+                        appendMessage(message, 'user');
+                        chatInput.value = '';
+
+                        // Show loader indicator
+                        const loaderDiv = document.createElement('div');
+                        loaderDiv.className = 'self-start px-4 py-2.5 rounded-lg bg-gray-900 text-gray-500 text-sm max-w-[85%] italic';
+                        loaderDiv.textContent = 'BlazePilot is typing...';
+                        chatBox.appendChild(loaderDiv);
+                        chatBox.scrollTop = chatBox.scrollHeight;
+
+                        try {
+                            let responseText = '';
+                            if (typeof AIEngine !== 'undefined') {
+                                responseText = await AIEngine.complete(message);
+                            } else {
+                                await new Promise(res => setTimeout(res, 1200));
+                                if (message.toLowerCase().includes('price') || message.toLowerCase().includes('cost')) {
+                                    responseText = 'BlazeNXT is open-source under the MIT license, meaning it is 100% free for personal and commercial usage!';
+                                } else if (message.toLowerCase().includes('performance') || message.toLowerCase().includes('fast')) {
+                                    responseText = 'We leverage native ES Modules, lightweight CSS, and pure Web APIs to hit < 1.2s FCP and maintain smooth 60fps animations.';
+                                } else {
+                                    responseText = "Thank you for asking! BlazeNXT is an advanced zero-dependency SPA with active service workers, secure storage encryption, and unified multi-AI capabilities.";
+                                }
+                            }
+                            loaderDiv.remove();
+                            appendMessage(responseText, 'bot');
+                            
+                            if (typeof Analytics !== 'undefined') {
+                                Analytics.trackEvent('AI Support', 'chat_query', message);
+                            }
+                        } catch (err) {
+                            loaderDiv.remove();
+                            appendMessage('Sorry, I encountered an issue fetching answers. Please try again!', 'bot');
+                        }
+                    };
+
+                    chatSendBtn.addEventListener('click', handleSend);
+                    chatInput.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter') handleSend();
+                    });
+                }
+            })();
+        </script>
+    </main>
+</body>
+</html>
