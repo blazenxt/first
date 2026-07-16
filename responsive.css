@@ -1,0 +1,116 @@
+/**
+ * BlazeNXT Responsive Styling Framework
+ * =====================================
+ * Establishes custom media queries, flexbox wrap behaviors,
+ * mobile navigation bar overlays, and grid responsiveness parameters.
+ * 
+ * @module responsive
+ * @version 1.0.0
+ * @author pixellllgg
+ * @license MIT
+ */
+
+/* Mobile navigation drawer animations & toggling */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 64px; /* navbar height */
+        left: -100%;
+        width: 80%;
+        height: calc(100vh - 64px);
+        background-color: var(--color-background-secondary);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        gap: 1.5rem !important;
+        transition: left 0.3s ease-in-out;
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+        border-right: 1px solid var(--color-border);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    /* Simple hamburger button mechanics */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 24px;
+        height: 18px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    .menu-toggle span {
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-text);
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -7px);
+    }
+    
+    .md-hidden {
+        display: flex !important;
+    }
+}
+
+/* Base adaptive grid systems */
+@media (max-width: 1024px) {
+    .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .text-5xl {
+        font-size: 2.5rem !important;
+    }
+    .text-4xl {
+        font-size: 2rem !important;
+    }
+    .text-3xl {
+        font-size: 1.75rem !important;
+    }
+    
+    /* Auto stack grid and column templates */
+    .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+        grid-template-cols: 1fr !important;
+    }
+    
+    .flex-row {
+        flex-direction: column !important;
+    }
+    
+    .hero-content {
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
