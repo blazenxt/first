@@ -14,7 +14,9 @@
     "analyze": "node scripts/analyze.js",
     "security-check": "npm audit",
     "performance-check": "node scripts/performance-check.js",
-    "generate-docs": "node scripts/generate-docs.js"
+    "generate-docs": "node scripts/generate-docs.js",
+    "setup:playwright": "node scripts/playwright/setup.mjs",
+    "shot": "node scripts/playwright/screenshot.mjs"
   },
   "keywords": [
     "vanilla-js",
@@ -49,6 +51,8 @@
     "url": "https://github.com/pixellllgg/first/issues"
   },
   "homepage": "https://github.com/pixellllgg/first#readme",
-  "devDependencies": {},
-  "dependencies": {}
+  "devDependencies": {
+    "@sparticuz/chromium": "^153.0.0",
+    "playwright": "^1.64.1"
+  }
 }
